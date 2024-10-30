@@ -1,0 +1,12 @@
+fastapi[standard]
+fastapi-limiter
+uvicorn[standard]
+python-jose[cryptography]
+passlib[bcrypt]
+python-multipart
+bcrypt
+cryptography
+sqlmodel
+aiomysql
+alembic
+pymysql
