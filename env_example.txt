@@ -1,0 +1,12 @@
+# shellcheck disable=SC2034
+
+# general configs
+SECRET_KEY=[generate_secret_key]
+ALGORITHM=[choose, for ex 'HS256']
+ACCESS_TOKEN_EXPIRE_MINUTES=[time for jwt expiration]
+
+HOST=localhost
+
+DB_NAME=
+DB_USER=
+DB_PASSWD=

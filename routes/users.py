@@ -5,9 +5,9 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from utils.dependencies import db_session, get_current_user_from_cookie
 
 
-router = APIRouter()
+user_router = APIRouter()
 
-@router.get("/users", tags=['Users'])
+@user_router.get("/users", tags=['Users'])
 async def get_users(
     db: AsyncSession = Depends(db_session),
     _: User = Depends(get_current_user_from_cookie)

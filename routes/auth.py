@@ -13,7 +13,7 @@ from utils.dependencies import get_user_by_username, db_session
 from utils.configs import SECRET_KEY, ALGORITHM, ACCESS_TOKEN_EXPIRE_MINUTES
 
 
-router = APIRouter()
+auth_router = APIRouter()
 bcrypt_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
 
@@ -34,7 +34,7 @@ async def create_user(
     return db_user
 
 
-@router.post("/register", tags=["Auth"])
+@auth_router.post("/register", tags=["Auth"])
 async def register_user(
     user: User,
     db: AsyncSession = Depends(db_session)
@@ -86,7 +86,7 @@ def create_access_token(
     return jwt.encode(to_encode, str(SECRET_KEY), algorithm=ALGORITHM)
 
 
-@router.post("/token", tags=["Auth"])
+@auth_router.post("/token", tags=["Auth"])
 async def get_access_token(
     form_data: OAuth2PasswordRequestForm = Depends(),
     db: AsyncSession = Depends(db_session)
@@ -120,7 +120,7 @@ async def get_access_token(
 
 
 # LOGOUT ----------------------------------------------------------------
-@router.post("/logout", tags=["Auth"])
+@auth_router.post("/logout", tags=["Auth"])
 async def logout_user() -> Response:
 
     response = JSONResponse({"message": "Logged out"})
